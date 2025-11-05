@@ -691,10 +691,10 @@
             <div class="registration-box">
                 <h3 style="color: #00d9ff; font-size: 24px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Early Registration (Until Oct 31, 2025)</h3>
                 <p style="font-size: 18px; margin-bottom: 10px; color: #00ffaa;">Inclusive of Seminar Kit</p>
-                 <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">ID</p>
-                 <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">Lace</p>
-                 <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">Pen</p>
-                 <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">NoteBook</p>
+                <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">ID</p>
+                <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">Lace</p>
+                <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">Pen</p>
+                <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">NoteBook</p>
                 <p style="font-size: 16px; margin-top: 20px;">For more queries, you may email at <strong style="color: #00d9ff;">cpess@ub.edu.ph</strong></p>
                 <p style="font-size: 16px;">or contact <strong style="color: #00d9ff;">Rica Paulyn Barredo</strong> via mobile <strong style="color: #00d9ff;">09673048349</strong></p>
             </div>
@@ -707,7 +707,7 @@
         </div>
 
         <footer>
-            <p style="font-size: 24px; margin-bottom: 20px; letter-spacing: 2px; color: #00d9ff;">Computer Engineering Student's  Society</p>
+            <p style="font-size: 24px; margin-bottom: 20px; letter-spacing: 2px; color: #00d9ff;">Computer Engineering Student's Society</p>
             <p style="font-size: 18px; margin-bottom: 30px;">University of Batangas</p>
             
             <div class="contact-grid">
@@ -723,21 +723,26 @@
             
             <p style="margin-top: 40px; opacity: 0.6; letter-spacing: 1px;">© 2025 CPESS - University of Batangas. All rights reserved.</p>
             <p style="margin-top: 40px; opacity: 0.6; letter-spacing: 1px;">© Created by: Engr. Xiao "Dinosaur" Villacrusis.</p>
-            <p style="margin-top: 10px; opacity: 0.6; letter-spacing: 1px;">Contact: 0965-490-1120 / 1700925@ub.edu.ph</p> 
-        </footer>   
+            <p style="margin-top: 10px; opacity: 0.6; letter-spacing: 1px;">Contact: 0965-490-1120 / 1700925@ub.edu.ph</p>    
+        </footer>    
     </div>
 
     <script>
-
-        const particlesContainer = document.getElementByID('particles');
+        // FIX: The function name was corrected from getElementByID to getElementById
+        const particlesContainer = document.getElementById('particles');
+        
         for (let i = 0; i < 30; i++){
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.left = Math.random() * 100 + '%';
             particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 8 + 's'; 
+            particle.style.animationDelay = Math.random() * 8 + 's';
             particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-            particlesContainer.appendChild(particle);
+            
+            // Only attempt to append if the container was found
+            if (particlesContainer) {
+                particlesContainer.appendChild(particle);
+            }
         }
 
         
@@ -769,7 +774,7 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-    
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -781,4 +786,5 @@
         });
     </script>
 </body>
+
 </html>
