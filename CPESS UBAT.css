@@ -1,175 +1,212 @@
 <style>
     /* 1. CYBERPUNK VARIABLES (MODULARIZATION) */
-    :root {
-        --color-background: #0a0e27;
-        --color-primary-neon: #00d9ff; /* Cyan/Blue Neon */
-        --color-secondary-neon: #ff00ff; /* Pink/Magenta Neon */
-        --color-accent-green: #00ffaa;
-        --font-main: 'Orbitron', 'Rajdhani', sans-serif;
-        --shadow-primary: 0 0 20px rgba(0, 217, 255, 0.5);
-        --shadow-secondary: 0 0 20px rgba(255, 0, 255, 0.5);
-    }
+/* 1. CYBERPUNK VARIABLES (MODULARIZATION) */
+:root {
+    --color-background: #0a0e27;
+    --color-primary-neon: #00d9ff; /* Cyan/Blue Neon */
+    --color-secondary-neon: #ff00ff; /* Pink/Magenta Neon */
+    --color-accent-green: #00ffaa;
+    --font-main: 'Orbitron', 'Rajdhani', sans-serif;
+    --shadow-primary: 0 0 20px rgba(0, 217, 255, 0.5);
+    --shadow-secondary: 0 0 20px rgba(255, 0, 255, 0.5);
+}
 
-    /* 2. BASE STYLES & BACKGROUNDS */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+/* 2. BASE STYLES & BACKGROUNDS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        font-family: var(--font-main);
-        background: var(--color-background);
-        color: #fff;
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
+body {
+    font-family: var(--font-main);
+    background: var(--color-background);
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-    /* GRID BACKGROUND */
-    .grid-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background:
-            linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
-        background-size: 50px 50px;
-        pointer-events: none;
-        z-index: 0;
-    }
+/* GRID BACKGROUND */
+.grid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
 
-    /* PARTICLE ANIMATIONS */
-    .particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 0;
-    }
+/* PARTICLE ANIMATIONS */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
 
-    .particle {
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        background: var(--color-primary-neon);
-        border-radius: 50%;
-        animation: float-particle 8s infinite ease-in-out;
-        box-shadow: 0 0 10px var(--color-primary-neon);
-    }
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--color-primary-neon);
+    border-radius: 50%;
+    animation: float-particle 8s infinite ease-in-out;
+    box-shadow: 0 0 10px var(--color-primary-neon);
+}
 
-    @keyframes float-particle {
-        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-        50% { transform: translateY(-100px) translateX(50px); opacity: 1; }
-    }
+@keyframes float-particle {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    50% { transform: translateY(-100px) translateX(50px); opacity: 1; }
+}
+ 
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* 3. HEADER AND TYPOGRAPHY */
+header {
+    text-align: center;
+    padding: 30px 0; /* Reduced padding slightly */
+    position: relative;
+}
+
+/* Header Divider Line */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary-neon), var(--color-secondary-neon), var(--color-primary-neon), transparent);
+    box-shadow: var(--shadow-primary);
+}
+
+/* Logos/Branding */
+.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.logo-text {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, var(--color-primary-neon), var(--color-accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+}
+
+.divider {
+    color: var(--color-primary-neon);
+    font-size: 26px;
+}
+
+/* --- 📸 NEW HEADER PHOTO BANNER STYLES --- */
+.header-banner {
+    width: 100%;
+    max-width: 1000px; /* Limits the max size of the banner */
+    height: 300px; /* Adjust height as needed */
+    margin: 30px auto; /* Centering and spacing */
     
-    .container {
-        position: relative;
-        z-index: 1;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 20px;
+    /* 🖼️ IMPORTANT: REPLACE THIS URL with your actual image file name */
+    background-image: url('images/your-event-banner.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Cyberpunk styling */
+    border: 3px solid var(--color-primary-neon); /* Cyan border */
+    box-shadow: 0 0 50px rgba(255, 0, 255, 0.4); /* Pink glow */
+    
+    /* Optional: Angular sci-fi shape */
+    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%); 
+}
+
+@media (max-width: 768px) {
+    .header-banner {
+        height: 150px;
+        margin: 20px auto;
     }
+}
+/* ----------------------------------------- */
 
 
-    /* 3. HEADER AND TYPOGRAPHY */
-    header {
-        text-align: center;
-        padding: 40px 0;
-        position: relative;
-    }
+/* Main Title H1 (REMOVED/COMMENTED OUT AS IT'S NO LONGER IN USE) */
+/*
+h1 {
+    font-size: 48px;
+    margin: 30px 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    background: linear-gradient(90deg, var(--color-primary-neon) 0%, var(--color-secondary-neon) 50%, var(--color-primary-neon) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    text-shadow: 0 0 40px rgba(0, 217, 255, 0.8);
+}
+*/
 
-    /* Header Divider Line */
-    header::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--color-primary-neon), var(--color-secondary-neon), var(--color-primary-neon), transparent);
-        box-shadow: var(--shadow-primary);
-    }
+/* @keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+} */
 
-    /* Logos/Branding */
-    .logos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-    }
+/* Subtitle */
+.subtitle {
+    font-size: 22px;
+    color: var(--color-accent-green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 20px; /* Added spacing after the new banner */
+}
 
-    .logo-text {
-        font-size: 26px;
-        font-weight: 900;
-        letter-spacing: 4px;
-        background: linear-gradient(135deg, var(--color-primary-neon), var(--color-accent-green));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-transform: uppercase;
-        text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
-    }
+/* General H2 Styling */
+h2 {
+    font-size: 36px;
+    margin: 60px 0 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--color-primary-neon);
+    position: relative;
+    padding-left: 30px;
+}
 
-    .divider {
-        color: var(--color-primary-neon);
-        font-size: 26px;
-    }
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background: var(--color-secondary-neon);
+    box-shadow: 0 0 20px var(--color-secondary-neon);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
 
-    /* Main Title H1 */
-    h1 {
-        font-size: 48px;
-        margin: 30px 0 20px;
-        text-transform: uppercase;
-        letter-spacing: 6px;
-        background: linear-gradient(90deg, var(--color-primary-neon) 0%, var(--color-secondary-neon) 50%, var(--color-primary-neon) 100%);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shimmer 3s linear infinite;
-        text-shadow: 0 0 40px rgba(0, 217, 255, 0.8);
-    }
-
-    @keyframes shimmer {
-        0% { background-position: 0% center; }
-        100% { background-position: 200% center; }
-    }
-
-    /* Subtitle */
-    .subtitle {
-        font-size: 22px;
-        color: var(--color-accent-green);
-        letter-spacing: 2px;
-        text-transform: uppercase;
-    }
-
-    /* General H2 Styling */
-    h2 {
-        font-size: 36px;
-        margin: 60px 0 30px;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        color: var(--color-primary-neon);
-        position: relative;
-        padding-left: 30px;
-    }
-
-    h2::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 15px;
-        height: 15px;
-        background: var(--color-secondary-neon);
-        box-shadow: 0 0 20px var(--color-secondary-neon);
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+/* ... (rest of the CSS remains the same) ... */
     }
 
     /* 4. MAIN LAYOUT AND SECTION STYLING */
@@ -608,3 +645,4 @@
         .countdown-box { padding: 15px 20px; min-width: 100px; }
     }
 </style>
+
