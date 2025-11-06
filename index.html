@@ -67,75 +67,36 @@
             padding: 20px;
         }
 
-        header {
-            text-align: center;
-            padding: 40px 0 20px 0;
+        /* -------------------------------------- */
+        /* --- NEW IMAGE HEADER STYLES --- */
+        /* -------------------------------------- */
+        .image-header {
+            width: 100%;
+            /* Adjust this height as needed for your banner */
+            height: 250px; 
+            margin-bottom: 20px;
+            background-image: url('images/your-event-banner.jpg'); /* 🎯 REPLACE with your actual header image file path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             position: relative;
+            border: 3px solid transparent;
+            border-image: linear-gradient(90deg, #00d9ff, #ff00ff) 1;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
         }
 
-        header::after {
+        .image-header::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00d9ff, #ff00ff, #00d9ff, transparent);
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Optional: Add a subtle overlay gradient if the text tabs are hard to read over the image */
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%); 
         }
 
-        .logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .logo-text {
-            font-size: 26px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, #00d9ff, #00ffaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
-        }
-
-        .divider {
-            color: #00d9ff;
-            font-size: 26px;
-        }
-
-        h1 {
-            font-size: 48px;
-            margin: 30px 0 20px;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            background: linear-gradient(90deg, #00d9ff 0%, #ff00ff 50%, #00d9ff 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s linear infinite;
-            text-shadow: 0 0 40px rgba(0, 217, 255, 0.8);
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-
-        .subtitle {
-            font-size: 22px;
-            color: #00ffaa;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* --- New Tab Navigation Styles --- */
+        /* --- Tab Navigation Styles --- */
         .tabs-nav {
             display: flex;
             justify-content: center;
@@ -210,7 +171,7 @@
             clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
         }
 
-        /* Ensuring all sub-sections of the tabs also fit the styling */
+        /* Remaining CSS is largely unchanged, included for completeness */
         .section {
             margin: 40px 0;
             padding: 40px;
@@ -220,7 +181,6 @@
             position: relative;
         }
         
-        /* Ensure the main h2 tags inside the main-section content are styled correctly */
         h2 {
             font-size: 36px;
             margin: 30px 0 30px;
@@ -245,28 +205,6 @@
             clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
             position: relative;
             transition: all 0.3s ease;
-        }
-
-        .event-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 10px;
-            height: 10px;
-            background: #00d9ff;
-            box-shadow: 0 0 10px #00d9ff;
-        }
-
-        .event-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 10px;
-            height: 10px;
-            background: #ff00ff;
-            box-shadow: 0 0 10px #ff00ff;
         }
 
         .event-item:hover {
@@ -388,31 +326,18 @@
             background-blend-mode: normal; 
         }
 
-        /* * CUSTOM CSS FOR UNIQUE SPEAKER PHOTOS *
-        * Update the 'url()' paths below with the actual file names for your speakers.
-        */
-
-        /* 1. Mr. Jerry Sto. Tomas */
+        /* * CUSTOM CSS FOR UNIQUE SPEAKER PHOTOS * */
         .speaker-jerry .speaker-photo-inner {
-            background-image: url('8bf00dbf-f4f1-4381-bd97-390cbe5c0e16 (1).jpg');
+            background-image: url('images/8bf00dbf-f4f1-4381-bd97-390cbe5c0e16 (1).jpg');
         }
-
-        /* 2. Ms. Elvie Pita */
         .speaker-elvie .speaker-photo-inner {
-            /* **REPLACE 'elvie-photo.jpg' with the actual file name for Elvie** */
-            background-image: url('c19e6e19-b231-4892-a10a-852aadd645a2.jpg'); 
+            background-image: url('images/elvie-photo.jpg'); 
         }
-
-        /* 3. Engr. John Francis Nacional */
         .speaker-johnfrancis .speaker-photo-inner {
-            /* **REPLACE 'johnfrancis-photo.jpg' with the actual file name for John Francis** */
-            background-image: url('577620126_851665863877662_3407797244410410849_n.jpg');
+            background-image: url('images/johnfrancis-photo.jpg');
         }
-
-        /* 4. Engr. John Elmer Santos */
         .speaker-johnelmer .speaker-photo-inner {
-            /* **REPLACE 'johnelmer-photo.jpg' with the actual file name for John Elmer** */
-            background-image: url('566593844_1740275639978082_5798005922789543004_n.jpg');
+            background-image: url('images/johnelmer-photo.jpg');
         }
 
         
@@ -442,7 +367,6 @@
             line-height: 1.8;
         }
 
-        /* ... [Remaining CSS for ul, li, registration-box, cta-button, contact-grid, countdown, and media queries] ... */
         ul {
             list-style: none;
             padding: 20px 0;
@@ -622,8 +546,8 @@
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 32px; }
             h2 { font-size: 28px; }
+            .image-header { height: 150px; }
             .speaker-card { flex-direction: column; text-align: center; }
             .countdown-number { font-size: 36px; }
             .countdown-box { padding: 15px 20px; min-width: 100px; }
@@ -639,15 +563,8 @@
 
     <div class="container">
         <header>
-            <div class="logos">
-                <div class="logo-text">CPESS</div>
-                <div class="divider">×</div>
-                <div class="logo-text">University of Batangas</div>
-            </div>
-            <h1>Batangas AI & Cybersecurity Congress</h1>
-            <p class="subtitle">Artificial Intelligence and Cybersecurity: Innovations and Implications</p>
-        </header>
-
+            <div class="image-header" role="img" aria-label="Batangas AI & Cybersecurity Congress Event Banner"></div>
+            </header>
         <nav class="tabs-nav">
             <a class="tab-item active" data-target="overview">Overview</a>
             <a class="tab-item" data-target="speakers">Speakers</a>
@@ -913,6 +830,7 @@ technology.66</p>
     </script>
 </body>
 </html>
+
 
 
 
