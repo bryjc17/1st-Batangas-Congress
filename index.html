@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Batangas AI & Cybersecurity Congress 2025</title>
     <style>
+        /* Base and Background Styles (Unchanged) */
         * {
             margin: 0;
             padding: 0;
@@ -68,7 +69,7 @@
 
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 40px 0 20px 0; /* Adjusted padding to separate from nav */
             position: relative;
         }
 
@@ -134,8 +135,76 @@
             text-transform: uppercase;
         }
 
+        /* --- New Tab Navigation Styles --- */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+            gap: 10px;
+        }
+
+        .tab-item {
+            padding: 15px 30px;
+            color: #ccc;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-bottom: none;
+            position: relative;
+            transition: all 0.3s ease;
+            clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+        }
+
+        .tab-item:hover {
+            color: #00d9ff;
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .tab-item.active {
+            color: #00ffaa;
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.1);
+            box-shadow: 0 -5px 20px rgba(0, 217, 255, 0.4);
+            transform: translateY(-5px);
+            z-index: 2;
+        }
+
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #0a0e27; /* Hide border-bottom on active tab */
+            z-index: 3;
+        }
+
+        /* Styles for the sections that will be toggled (Unchanged except for class name) */
+        .main-section {
+            display: none; /* All sections hidden by default */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .main-section.active {
+            display: block; /* Only the active section is shown */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ... Other styles remain mostly unchanged ... */
+
         .hero-section {
-            margin: 60px 0;
+            /* Kept the class name, but it now acts as the content for the 'Overview' tab */
+            margin: 0; /* Remove top/bottom margin since it's inside the active section now */
             padding: 50px;
             background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(255, 0, 255, 0.05));
             border: 2px solid transparent;
@@ -144,18 +213,60 @@
             clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, #00d9ff, #ff00ff);
-            z-index: -1;
-            opacity: 0.1;
-            filter: blur(20px);
+        /* Ensuring all sub-sections of the tabs also fit the styling */
+        .section {
+            margin: 40px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.9), rgba(0, 217, 255, 0.02));
+            border-left: 3px solid #00d9ff;
+            border-right: 3px solid #ff00ff;
+            position: relative;
         }
+        
+        /* Ensure the main h2 tags inside the main-section content are styled correctly */
+        h2 {
+            font-size: 36px;
+            margin: 30px 0 30px; /* Adjusted margin */
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #00d9ff;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        /* ... Keep all other styles as they are (speaker-card, event-grid, etc.) ... */
+
+        /* Styles below this point are necessary for non-tab content (Footer, CTA) or are media queries */
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 255, 0.1));
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #00d9ff, #ff00ff, #00d9ff) 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 80px;
+            border-top: 2px solid transparent;
+            border-image: linear-gradient(90deg, transparent, #00d9ff, #ff00ff, #00d9ff, transparent) 1;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 28px; }
+            .speaker-card { flex-direction: column; text-align: center; }
+            .countdown-number { font-size: 36px; }
+            .countdown-box { padding: 15px 20px; min-width: 100px; }
+            .tabs-nav { flex-direction: column; }
+            .tab-item { width: 100%; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            .tab-item.active { transform: translateY(0); }
+        }
+
+        /* Remaining styles (event-grid, h2, ul, li, registration-box, cta-button, footer, etc.) are kept here but omitted for brevity in this explanation. */
 
         .event-grid {
             display: grid;
@@ -213,16 +324,6 @@
             letter-spacing: 1px;
         }
 
-        h2 {
-            font-size: 36px;
-            margin: 60px 0 30px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #00d9ff;
-            position: relative;
-            padding-left: 30px;
-        }
-
         h2::before {
             content: '';
             position: absolute;
@@ -234,15 +335,6 @@
             background: #ff00ff;
             box-shadow: 0 0 20px #ff00ff;
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        }
-
-        .section {
-            margin: 40px 0;
-            padding: 40px;
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.9), rgba(0, 217, 255, 0.02));
-            border-left: 3px solid #00d9ff;
-            border-right: 3px solid #ff00ff;
-            position: relative;
         }
 
         .section::before,
@@ -320,11 +412,10 @@
             border: 3px solid #0a0e27;
             background: linear-gradient(135deg, #1a2744, #0d3a52);
             box-shadow: 0 0 30px rgba(0, 217, 255, 0.5), inset 0 0 20px rgba(0, 217, 255, 0.2);
-            /* This is a placeholder for an image; real image insertion would be done via CSS background-image or an <img> tag */
             display: flex;
             justify-content: center;
             align-items: center;
-            color: transparent; /* Hides the placeholder text */
+            color: transparent;
             font-size: 10px;
         }
 
@@ -458,24 +549,6 @@
             box-shadow: 0 10px 40px rgba(0, 217, 255, 0.6);
         }
 
-        .cta-section {
-            text-align: center;
-            margin: 60px 0;
-            padding: 50px;
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 255, 0.1));
-            border: 2px solid transparent;
-            border-image: linear-gradient(45deg, #00d9ff, #ff00ff, #00d9ff) 1;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            margin-top: 80px;
-            border-top: 2px solid transparent;
-            border-image: linear-gradient(90deg, transparent, #00d9ff, #ff00ff, #00d9ff, transparent) 1;
-            position: relative;
-        }
-
         .contact-grid {
             display: flex;
             justify-content: center;
@@ -549,13 +622,6 @@
             text-transform: uppercase;
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 32px; }
-            h2 { font-size: 28px; }
-            .speaker-card { flex-direction: column; text-align: center; }
-            .countdown-number { font-size: 36px; }
-            .countdown-box { padding: 15px 20px; min-width: 100px; }
-        }
     </style>
 </head>
 <body>
@@ -573,169 +639,194 @@
             <p class="subtitle">Artificial Intelligence and Cybersecurity: Innovations and Implications</p>
         </header>
 
-        <div class="hero-section">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2 style="margin: 0 0 20px 0; padding: 0; font-size: 28px; letter-spacing: 3px;">EVENT COUNTDOWN</h2>
-                <div id="countdown" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <div class="countdown-box">
-                        <div class="countdown-number" id="days">00</div>
-                        <div class="countdown-label">DAYS</div>
+        <nav class="tabs-nav">
+            <a class="tab-item active" data-target="overview">Overview</a>
+            <a class="tab-item" data-target="speakers">Speakers</a>
+            <a class="tab-item" data-target="topics">Topics</a>
+            <a class="tab-item" data-target="registration">Registration</a>
+            <a class="tab-item" data-target="contact">Contact</a>
+        </nav>
+        
+        <div id="overview" class="main-section active">
+            <div class="hero-section">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="margin: 0 0 20px 0; padding: 0; font-size: 28px; letter-spacing: 3px;">EVENT COUNTDOWN</h2>
+                    <div id="countdown" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                        <div class="countdown-box">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">DAYS</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">HOURS</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">MINUTES</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">SECONDS</div>
+                        </div>
                     </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number" id="hours">00</div>
-                        <div class="countdown-label">HOURS</div>
+                </div>
+
+                <div class="event-grid">
+                    <div class="event-item">
+                        <span class="event-icon">📅</span>
+                        <div class="event-text">November 7, 2025</div>
                     </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number" id="minutes">00</div>
-                        <div class="countdown-label">MINUTES</div>
+                    <div class="event-item">
+                        <span class="event-icon">⏰</span>
+                        <div class="event-text">08:00 AM - 05:00 PM</div>
                     </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number" id="seconds">00</div>
-                        <div class="countdown-label">SECONDS</div>
+                    <div class="event-item">
+                        <span class="event-icon">📍</span>
+                        <div class="event-text">UB Auditorium</div>
                     </div>
                 </div>
             </div>
 
-            <div class="event-grid">
-                <div class="event-item">
-                    <span class="event-icon">📅</span>
-                    <div class="event-text">November 7, 2025</div>
+            <div class="section" id="mission-brief-content">
+                <h2>Mission Brief</h2>
+                <p style="font-size: 18px; line-height: 1.8;">Join us for a groundbreaking exploration of the intersection between Artificial Intelligence and Cybersecurity. This premier congress brings together industry leaders, researchers, and students to discuss the latest innovations, challenges, and implications in these rapidly evolving fields.</p>
+            </div>
+        </div>
+        
+        <div id="speakers" class="main-section">
+            <h2 style="margin-top: 0;">Featured Speakers</h2>
+
+            <div class="speaker-card">
+                <div class="speaker-photo">
+                    <div class="speaker-photo-inner">8bf00dbf-f4f1-4381-bd97-390cbe5c0e16 (1).jpg</div>
                 </div>
-                <div class="event-item">
-                    <span class="event-icon">⏰</span>
-                    <div class="event-text">08:00 AM - 05:00 PM</div>
-                </div>
-                <div class="event-item">
-                    <span class="event-icon">📍</span>
-                    <div class="event-text">UB Auditorium</div>
+                <div class="speaker-info">
+                    <div class="speaker-name">Mr. Jerry Sto. Tomas</div>
+                    <div class="speaker-title">CEO - FusionNode, Inc.</div>
+                    <p class="speaker-desc">Industry leader in technology innovation and cybersecurity solutions with extensive experience in enterprise security architecture.</p>
                 </div>
             </div>
-        </div>
 
-        <div class="section">
-            <h2>Mission Brief</h2>
-            <p style="font-size: 18px; line-height: 1.8;">Join us for a groundbreaking exploration of the intersection between Artificial Intelligence and Cybersecurity. This premier congress brings together industry leaders, researchers, and students to discuss the latest innovations, challenges, and implications in these rapidly evolving fields.</p>
-        </div>
-
-        <h2>Featured Speakers</h2>
-
-        <div class="speaker-card">
-            <div class="speaker-photo">
-                <div class="speaker-photo-inner"></div>
-            </div>
-            <div class="speaker-info">
-                <div class="speaker-name">Mr. Jerry Sto. Tomas</div>
-                <div class="speaker-title">CEO - FusionNode, Inc.</div>
-                <p class="speaker-desc">Industry leader in technology innovation and cybersecurity solutions with extensive experience in enterprise security architecture.</p>
-            </div>
-        </div>
-
-        <div class="speaker-card">
-            <div class="speaker-photo">
-                <div class="speaker-photo-inner"></div>
-            </div>
-            <div class="speaker-info">
-                <div class="speaker-name">Ms. Elvie Pita</div>
-                <div class="speaker-title">Head of the Innovative Learning Unit - University of Batangas</div>
-                <p class="speaker-desc">Expert in educational technology and innovative learning methodologies, pioneering AI integration in education.</p>
-            </div>
-        </div>
-
-        <div class="speaker-card">
-            <div class="speaker-photo">
-                <div class="speaker-photo-inner"></div>
-            </div>
-            <div class="speaker-info">
-                <div class="speaker-name">Engr. John Francis Nacional</div>
-                <div class="speaker-title">Education Technology Director - Rakso CT</div>
-                <p class="speaker-desc">Specialist in integrating cutting-edge technology solutions in education and professional training programs.</p>
-            </div>
-        </div>
-
-        <div class="speaker-card">
-            <div class="speaker-photo">
-                <div class="speaker-photo-inner"></div>
-            </div>
-            <div class="speaker-info">
-                <div class="speaker-name">Engr. John Elmer Santos</div>
-                <div class="speaker-title">Presales Engineer - Globe Telecom</div>
-                <p class="speaker-desc">Telecommunications expert with extensive experience in network security and infrastructure protection.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Core Topics</h2>
-            <ul>
-                <li>AI-powered threat detection and response systems</li>
-                <li>Machine learning algorithms in cybersecurity</li>
-                <li>Ethical implications of autonomous AI systems</li>
-                <li>Privacy protection and data security protocols</li>
-                <li>Future trajectories of secure AI architecture</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Target Operatives</h2>
-            <ul>
-                <li>Computer engineering students and researchers</li>
-                <li>Cybersecurity professionals and analysts</li>
-                <li>AI researchers and machine learning engineers</li>
-                <li>Technology enthusiasts and innovators</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Registration Protocol</h2>
-            
-            <div class="reg-steps">
-                <div class="reg-step" data-step="01">Fill out the Google Forms to register</div>
-                <div class="reg-step" data-step="02">Pay through GCash provided in the Google Forms</div>
-                <div class="reg-step" data-step="03">Confirmation and further details will be sent to your registered email</div>
-                <div class="reg-step" data-step="04">Follow the CPESS UBat Facebook Page and keep your notifications open for updates</div>
-            </div>
-
-            <div class="registration-box">
-                <h3 style="color: #00d9ff; font-size: 24px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Early Registration (Until Oct 31, 2025)</h3>
-                <p style="font-size: 18px; margin-bottom: 10px; color: #00ffaa;">Inclusive of Seminar Kit</p>
-                <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">ID</p>
-                <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">Lace</p>
-                <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">Pen</p>
-                <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">NoteBook</p>
-                <p style="font-size: 16px; margin-top: 20px;">For more queries, you may email at <strong style="color: #00d9ff;">cpess@ub.edu.ph</strong></p>
-                <p style="font-size: 16px;">or contact <strong style="color: #00d9ff;">Rica Paulyn Barredo</strong> via mobile <strong style="color: #00d9ff;">09673048349</strong></p>
-            </div>
-        </div>
-
-        <div class="cta-section">
-            <h2 style="margin: 0 0 20px 0; padding: 0;">Initiate Registration</h2>
-            <p style="font-size: 20px; margin-bottom: 30px; color: #00ffaa;">Secure your spot in this transformative event</p>
-            <a href="mailto:cpess@ub.edu.ph" class="cta-button">Register Now</a>
-        </div>
-
-        <footer>
-            <p style="font-size: 24px; margin-bottom: 20px; letter-spacing: 2px; color: #00d9ff;">Computer Engineering Student's Society</p>
-            <p style="font-size: 18px; margin-bottom: 30px;">University of Batangas</p>
-            
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <span style="margin-right: 10px;">📘</span>
-                    <a href="https://facebook.com/CPESSUBat" target="_blank">CPESS UBat</a>
+            <div class="speaker-card">
+                <div class="speaker-photo">
+                    <div class="speaker-photo-inner"></div>
                 </div>
-                <div class="contact-item">
-                    <span style="margin-right: 10px;">✉️</span>
-                    <a href="mailto:cpess@ub.edu.ph">cpess@ub.edu.ph</a>
+                <div class="speaker-info">
+                    <div class="speaker-name">Ms. Elvie Pita</div>
+                    <div class="speaker-title">Head of the Innovative Learning Unit - University of Batangas</div>
+                    <p class="speaker-desc">Expert in educational technology and innovative learning methodologies, pioneering AI integration in education.</p>
                 </div>
+            </div>
+
+            <div class="speaker-card">
+                <div class="speaker-photo">
+                    <div class="speaker-photo-inner"></div>
+                </div>
+                <div class="speaker-info">
+                    <div class="speaker-name">Engr. John Francis Nacional</div>
+                    <div class="speaker-title">Education Technology Director - Rakso CT</div>
+                    <p class="speaker-desc">Specialist in integrating cutting-edge technology solutions in education and professional training programs.</p>
+                </div>
+            </div>
+
+            <div class="speaker-card">
+                <div class="speaker-photo">
+                    <div class="speaker-photo-inner"></div>
+                </div>
+                <div class="speaker-info">
+                    <div class="speaker-name">Engr. John Elmer Santos</div>
+                    <div class="speaker-title">Presales Engineer - Globe Telecom</div>
+                    <p class="speaker-desc">Telecommunications expert with extensive experience in network security and infrastructure protection.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="topics" class="main-section">
+            <div class="section" style="margin-top: 0;">
+                <h2>Core Topics</h2>
+                <ul>
+                    <li>AI-powered threat detection and response systems</li>
+                    <li>Machine learning algorithms in cybersecurity</li>
+                    <li>Ethical implications of autonomous AI systems</li>
+                    <li>Privacy protection and data security protocols</li>
+                    <li>Future trajectories of secure AI architecture</li>
+                </ul>
             </div>
             
-            <p style="margin-top: 40px; opacity: 0.6; letter-spacing: 1px;">© 2025 CPESS - University of Batangas. All rights reserved.</p>
-            <p style="margin-top: 40px; opacity: 0.6; letter-spacing: 1px;">© Created by: Engr. Xiao Villacrusis.</p>    
-        </footer>    
+            <div class="section">
+                <h2>Target Operatives</h2>
+                <ul>
+                    <li>Computer engineering students and researchers</li>
+                    <li>Cybersecurity professionals and analysts</li>
+                    <li>AI researchers and machine learning engineers</li>
+                    <li>Technology enthusiasts and innovators</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="registration" class="main-section">
+            <div class="section" style="margin-top: 0;">
+                <h2>Registration Protocol</h2>
+                
+                <div class="reg-steps">
+                    <div class="reg-step" data-step="01">Fill out the Google Forms to register</div>
+                    <div class="reg-step" data-step="02">Pay through GCash provided in the Google Forms</div>
+                    <div class="reg-step" data-step="03">Confirmation and further details will be sent to your registered email</div>
+                    <div class="reg-step" data-step="04">Follow the CPESS UBat Facebook Page and keep your notifications open for updates</div>
+                </div>
+
+                <div class="registration-box">
+                    <h3 style="color: #00d9ff; font-size: 24px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Early Registration (Until Oct 31, 2025)</h3>
+                    <p style="font-size: 18px; margin-bottom: 10px; color: #00ffaa;">Inclusive of Seminar Kit</p>
+                    <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">ID</p>
+                    <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">Lace</p>
+                    <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">Pen</p>
+                    <p style="font-size: 16px; margin-bottom: 10px; color: #d8dada;">NoteBook</p>
+                    <p style="font-size: 16px; margin-top: 20px;">For more queries, you may email at <strong style="color: #00d9ff;">cpess@ub.edu.ph</strong></p>
+                    <p style="font-size: 16px;">or contact <strong style="color: #00d9ff;">Rica Paulyn Barredo</strong> via mobile <strong style="color: #00d9ff;">09673048349</strong></p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2 style="margin: 0 0 20px 0; padding: 0;">Initiate Registration</h2>
+                <p style="font-size: 20px; margin-bottom: 30px; color: #00ffaa;">Secure your spot in this transformative event</p>
+                <a href="mailto:cpess@ub.edu.ph" class="cta-button">Register Now</a>
+            </div>
+        </div>
+
+        <div id="contact" class="main-section">
+            <div class="cta-section" style="margin-top: 0;">
+                <h2 style="margin: 0 0 20px 0; padding: 0;">Establish Contact</h2>
+                <p style="font-size: 20px; margin-bottom: 30px; color: #00ffaa;">Connect with the organizing committee for support.</p>
+            </div>
+            
+            <footer style="margin-top: 0; border: none;">
+                <p style="font-size: 24px; margin-bottom: 20px; letter-spacing: 2px; color: #00d9ff;">Computer Engineering Student's Society</p>
+                <p style="font-size: 18px; margin-bottom: 30px;">University of Batangas</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span style="margin-right: 10px;">📘</span>
+                        <a href="https://web.facebook.com/cpessUB/?_rdc=1&_rdr#" target="_blank">CPESS UBat</a>
+                    </div>
+                    <div class="contact-item">
+                        <span style="margin-right: 10px;">✉️</span>
+                        <a href="mailto:cpess@ub.edu.ph">cpess@ub.edu.ph</a>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 40px; opacity: 0.6; letter-spacing: 1px;">© 2025 CPESS - University of Batangas. All rights reserved.</p>
+                <p style="margin-top: 40px; opacity: 0.6; letter-spacing: 1px;">© Created by: Engr. Xiao "DINOORAOWWWWWW" Villacrusis.</p>    
+            </footer>
+        </div>
+
+
     </div>
 
     <script>
+        // Particle Generation (Unchanged)
         const particlesContainer = document.getElementById('particles');
         
-        // Particle generation loop
         for (let i = 0; i < 30; i++){
             const particle = document.createElement('div');
             particle.className = 'particle';
@@ -749,14 +840,13 @@
             }
         }
 
-        
+        // Countdown Function (Unchanged)
         function updateCountdown() {
             // Event date is November 7, 2025 at 08:00:00 AM
             const eventDate = new Date('2025-11-07T08:00:00').getTime();
             const now = new Date().getTime();
             const distance = eventDate - now;
 
-            // Stop the countdown if the event has passed
             if (distance < 0) {
                 document.getElementById('days').textContent = '00';
                 document.getElementById('hours').textContent = '00';
@@ -765,13 +855,11 @@
                 return;
             }
 
-            // Time calculations for days, hours, minutes and seconds
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Update the elements, ensuring two digits (padStart)
             document.getElementById('days').textContent = String(days).padStart(2, '0');
             document.getElementById('hours').textContent = String(hours).padStart(2, '0');
             document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
@@ -779,21 +867,45 @@
         }
 
         
-        // Initial call and interval setup
+        // --- New Tab Functionality ---
+        function showSection(targetId) {
+            // 1. Hide all main sections
+            document.querySelectorAll('.main-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Deactivate all tabs
+            document.querySelectorAll('.tab-item').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // 3. Show the target section and set the active tab
+            const targetSection = document.getElementById(targetId);
+            const targetTab = document.querySelector(`.tab-item[data-target="${targetId}"]`);
+            
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+        }
+
+        // 4. Attach event listeners to tabs
+        document.querySelectorAll('.tab-item').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                showSection(targetId);
+            });
+        });
+
+
+        // Initial call and interval setup for countdown
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        
-        // Smooth scrolling for anchor links (though none seem to be in use)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+        // Remove the smooth scroll script as it is no longer needed with tabs
     </script>
 </body>
 </html>
