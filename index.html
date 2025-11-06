@@ -69,7 +69,7 @@
 
         header {
             text-align: center;
-            padding: 40px 0 20px 0; /* Adjusted padding to separate from nav */
+            padding: 40px 0 20px 0;
             position: relative;
         }
 
@@ -185,7 +185,7 @@
             z-index: 3;
         }
 
-        /* Styles for the sections that will be toggled (Unchanged except for class name) */
+        /* Styles for the sections that will be toggled */
         .main-section {
             display: none; /* All sections hidden by default */
             animation: fadeIn 0.5s ease-in-out;
@@ -200,11 +200,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ... Other styles remain mostly unchanged ... */
-
         .hero-section {
-            /* Kept the class name, but it now acts as the content for the 'Overview' tab */
-            margin: 0; /* Remove top/bottom margin since it's inside the active section now */
+            margin: 0;
             padding: 50px;
             background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(255, 0, 255, 0.05));
             border: 2px solid transparent;
@@ -226,7 +223,7 @@
         /* Ensure the main h2 tags inside the main-section content are styled correctly */
         h2 {
             font-size: 36px;
-            margin: 30px 0 30px; /* Adjusted margin */
+            margin: 30px 0 30px;
             text-transform: uppercase;
             letter-spacing: 4px;
             color: #00d9ff;
@@ -234,40 +231,6 @@
             padding-left: 30px;
         }
         
-        /* ... Keep all other styles as they are (speaker-card, event-grid, etc.) ... */
-
-        /* Styles below this point are necessary for non-tab content (Footer, CTA) or are media queries */
-        .cta-section {
-            text-align: center;
-            margin: 60px 0;
-            padding: 50px;
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 255, 0.1));
-            border: 2px solid transparent;
-            border-image: linear-gradient(45deg, #00d9ff, #ff00ff, #00d9ff) 1;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            margin-top: 80px;
-            border-top: 2px solid transparent;
-            border-image: linear-gradient(90deg, transparent, #00d9ff, #ff00ff, #00d9ff, transparent) 1;
-            position: relative;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 32px; }
-            h2 { font-size: 28px; }
-            .speaker-card { flex-direction: column; text-align: center; }
-            .countdown-number { font-size: 36px; }
-            .countdown-box { padding: 15px 20px; min-width: 100px; }
-            .tabs-nav { flex-direction: column; }
-            .tab-item { width: 100%; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-            .tab-item.active { transform: translateY(0); }
-        }
-
-        /* Remaining styles (event-grid, h2, ul, li, registration-box, cta-button, footer, etc.) are kept here but omitted for brevity in this explanation. */
-
         .event-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -417,8 +380,29 @@
             align-items: center;
             color: transparent;
             font-size: 10px;
+            
+            /* Add these properties to support the background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
+        /* * CUSTOM CSS FOR SPEAKER PHOTOS 
+        * We apply the same photo to all speakers as requested, 
+        * using a class on the parent card for demonstration.
+        */
+        .speaker-jerry .speaker-photo-inner,
+        .speaker-elvie .speaker-photo-inner,
+        .speaker-johnfrancis .speaker-photo-inner,
+        .speaker-johnelmer .speaker-photo-inner {
+            /* * THIS IS WHERE THE IMAGE IS ADDED: 
+            * Ensure the file path matches where the image is stored relative to your HTML file.
+            */
+            background-image: url('8bf00dbf-f4f1-4381-bd97-390cbe5c0e16 (1).jpg'); 
+            background-blend-mode: normal; /* Removes the placeholder dark gradient for a clear photo */
+        }
+        
+        /* Speaker Info Styles (Unchanged) */
         .speaker-info {
             flex: 1;
             min-width: 250px;
@@ -444,6 +428,7 @@
             line-height: 1.8;
         }
 
+        /* ... [Remaining CSS for ul, li, registration-box, cta-button, contact-grid, countdown, and media queries] ... */
         ul {
             list-style: none;
             padding: 20px 0;
@@ -622,6 +607,16 @@
             text-transform: uppercase;
         }
 
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 28px; }
+            .speaker-card { flex-direction: column; text-align: center; }
+            .countdown-number { font-size: 36px; }
+            .countdown-box { padding: 15px 20px; min-width: 100px; }
+            .tabs-nav { flex-direction: column; }
+            .tab-item { width: 100%; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            .tab-item.active { transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -696,8 +691,8 @@
         <div id="speakers" class="main-section">
             <h2 style="margin-top: 0;">Featured Speakers</h2>
 
-            <div class="speaker-card">
-                <div class="speaker photo">
+            <div class="speaker-card speaker-jerry">
+                <div class="speaker-photo">
                     <div class="speaker-photo-inner"></div>
                 </div>
                 <div class="speaker-info">
@@ -707,7 +702,7 @@
                 </div>
             </div>
 
-            <div class="speaker-card">
+            <div class="speaker-card speaker-elvie">
                 <div class="speaker-photo">
                     <div class="speaker-photo-inner"></div>
                 </div>
@@ -718,7 +713,7 @@
                 </div>
             </div>
 
-            <div class="speaker-card">
+            <div class="speaker-card speaker-johnfrancis">
                 <div class="speaker-photo">
                     <div class="speaker-photo-inner"></div>
                 </div>
@@ -729,7 +724,7 @@
                 </div>
             </div>
 
-            <div class="speaker-card">
+            <div class="speaker-card speaker-johnelmer">
                 <div class="speaker-photo">
                     <div class="speaker-photo-inner"></div>
                 </div>
@@ -819,95 +814,68 @@
                 <p style="margin-top: 40px; opacity: 0.6; letter-spacing: 1px;">© Created by: Engr. Xiao Villacrusis.</p>    
             </footer>
         </div>
-
-
     </div>
-
+    
     <script>
-        // Particle Generation (Unchanged)
-        const particlesContainer = document.getElementById('particles');
-        
-        for (let i = 0; i < 30; i++){
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 8 + 's';
-            particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-            
-            if (particlesContainer) {
-                particlesContainer.appendChild(particle);
-            }
-        }
+        // Tab Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-item');
+            const sections = document.querySelectorAll('.main-section');
 
-        // Countdown Function (Unchanged)
-        function updateCountdown() {
-            // Event date is November 7, 2025 at 08:00:00 AM
-            const eventDate = new Date('2025-11-07T08:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = eventDate - now;
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and sections
+                    tabs.forEach(t => t.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
 
-            if (distance < 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                return;
-            }
+                    // Add active class to the clicked tab
+                    tab.classList.add('active');
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-        }
-
-        
-        // --- New Tab Functionality ---
-        function showSection(targetId) {
-            // 1. Hide all main sections
-            document.querySelectorAll('.main-section').forEach(section => {
-                section.classList.remove('active');
+                    // Show the corresponding section
+                    const targetId = tab.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
             });
 
-            // 2. Deactivate all tabs
-            document.querySelectorAll('.tab-item').forEach(tab => {
-                tab.classList.remove('active');
-            });
+            // Countdown Timer
+            const eventDate = new Date('November 7, 2025 08:00:00').getTime();
 
-            // 3. Show the target section and set the active tab
-            const targetSection = document.getElementById(targetId);
-            const targetTab = document.querySelector(`.tab-item[data-target="${targetId}"]`);
-            
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
-        }
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
 
-        // 4. Attach event listeners to tabs
-        document.querySelectorAll('.tab-item').forEach(tab => {
-            tab.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('data-target');
-                showSection(targetId);
-            });
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the results
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+                // If the countdown is finished
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('countdown').innerHTML = "<div style='color:#ff00ff; font-size:28px;'>EVENT IS LIVE!</div>";
+                }
+            };
+
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+
+            // Particle generation (optional)
+            const particleContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `${Math.random() * 8}s`;
+                particleContainer.appendChild(particle);
+            }
         });
-
-
-        // Initial call and interval setup for countdown
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Remove the smooth scroll script as it is no longer needed with tabs
     </script>
 </body>
 </html>
-
-
