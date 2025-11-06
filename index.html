@@ -381,26 +381,40 @@
             color: transparent;
             font-size: 10px;
             
-            /* Add these properties to support the background image */
+            /* Styles for image insertion */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-blend-mode: normal; 
         }
 
-        /* * CUSTOM CSS FOR SPEAKER PHOTOS 
-        * We apply the same photo to all speakers as requested, 
-        * using a class on the parent card for demonstration.
+        /* * CUSTOM CSS FOR UNIQUE SPEAKER PHOTOS *
+        * Update the 'url()' paths below with the actual file names for your speakers.
         */
-        .speaker-jerry .speaker-photo-inner,
-        .speaker-elvie .speaker-photo-inner,
-        .speaker-johnfrancis .speaker-photo-inner,
-        .speaker-johnelmer .speaker-photo-inner {
-            /* * THIS IS WHERE THE IMAGE IS ADDED: 
-            * Ensure the file path matches where the image is stored relative to your HTML file.
-            */
-            background-image: url('8bf00dbf-f4f1-4381-bd97-390cbe5c0e16 (1).jpg'); 
-            background-blend-mode: normal; /* Removes the placeholder dark gradient for a clear photo */
+
+        /* 1. Mr. Jerry Sto. Tomas */
+        .speaker-jerry .speaker-photo-inner {
+            background-image: url('8bf00dbf-f4f1-4381-bd97-390cbe5c0e16 (1).jpg');
         }
+
+        /* 2. Ms. Elvie Pita */
+        .speaker-elvie .speaker-photo-inner {
+            /* **REPLACE 'elvie-photo.jpg' with the actual file name for Elvie** */
+            background-image: url('c19e6e19-b231-4892-a10a-852aadd645a2.jpg'); 
+        }
+
+        /* 3. Engr. John Francis Nacional */
+        .speaker-johnfrancis .speaker-photo-inner {
+            /* **REPLACE 'johnfrancis-photo.jpg' with the actual file name for John Francis** */
+            background-image: url('bfc77d29-2e07-443f-b2f1-87c48adacfb5.jpg');
+        }
+
+        /* 4. Engr. John Elmer Santos */
+        .speaker-johnelmer .speaker-photo-inner {
+            /* **REPLACE 'johnelmer-photo.jpg' with the actual file name for John Elmer** */
+            background-image: url('a736c401-a63b-4fb6-adf5-e0a6b1f1db2e.jpg');
+        }
+
         
         /* Speaker Info Styles (Unchanged) */
         .speaker-info {
@@ -684,7 +698,7 @@
 
             <div class="section" id="mission-brief-content">
                 <h2>Mission Brief</h2>
-                <p style="font-size: 18px; line-height: 1.8;">Join us for a groundbreaking exploration of the intersection between Artificial Intelligence and Cybersecurity. This premier congress brings together industry leaders, researchers, and students to discuss the latest innovations, challenges, and implications in these rapidly evolving fields.</p>
+                <p style="font-size: 18px; line-height: 1.8;">Join us for a groundbreaking exploration of the intersection between **Artificial Intelligence and Cybersecurity**. This premier congress brings together industry leaders, researchers, and students to discuss the latest innovations, challenges, and implications in these rapidly evolving fields.</p>
             </div>
         </div>
         
